@@ -1,0 +1,2 @@
+build --strategy=KotlinCompile=worker
+build --strategy=JavaCompile=worker

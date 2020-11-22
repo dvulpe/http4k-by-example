@@ -1,0 +1,47 @@
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "define_kt_toolchain", "kt_jvm_library")
+
+kt_jvm_library(
+    name = "main",
+    srcs = glob(["src/main/kotlin/**/*.kt"]),
+    deps = [
+        "@maven//:com_squareup_okhttp3_okhttp",
+        "@maven//:org_http4k_http4k_client_okhttp",
+        "@maven//:org_http4k_http4k_cloudnative",
+        "@maven//:org_http4k_http4k_contract",
+        "@maven//:org_http4k_http4k_core",
+        "@maven//:org_http4k_http4k_format_core",
+        "@maven//:org_http4k_http4k_format_jackson",
+        "@maven//:org_http4k_http4k_security_oauth",
+        "@maven//:org_http4k_http4k_server_undertow",
+        "@maven//:org_http4k_http4k_template_core",
+        "@maven//:org_http4k_http4k_template_handlebars",
+    ],
+)
+
+
+kt_jvm_library(
+    name = "test",
+    srcs = glob(["src/test/kotlin/**/*.kt"]),
+    deps = [
+        ":main",
+
+        "@maven//:dev_forkhandles_result4k",
+        "@maven//:com_natpryce_hamkrest",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+
+        "@maven//:org_http4k_http4k_testing_webdriver",
+        "@maven//:org_http4k_http4k_testing_chaos",
+        "@maven//:org_http4k_http4k_testing_hamkrest",
+        "@maven//:org_http4k_http4k_testing_approval",
+    ],
+)
+
+
+
+define_kt_toolchain(
+    name = "kotlin_toolchain",
+    api_version = "1.4",
+    jvm_target = "11",
+    language_version = "1.4",
+)
