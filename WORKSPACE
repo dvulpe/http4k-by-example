@@ -40,7 +40,6 @@ maven_install(
         "org.http4k:http4k-security-oauth:3.278.0",
         "org.http4k:http4k-server-undertow:3.278.0",
         "org.http4k:http4k-template-handlebars:3.278.0",
-
         "org.junit.jupiter:junit-jupiter-api:5.7.0",
         "org.junit.jupiter:junit-jupiter-engine:5.7.0",
         "org.http4k:http4k-testing-hamkrest:3.278.0",
@@ -67,9 +66,9 @@ kt_download_local_dev_dependencies()
 
 load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories")
 
-KOTLIN_VERSION = "1.4.10"
+KOTLIN_VERSION = "1.4.20"
 
-KOTLINC_RELEASE_SHA = "bb1a21d70e521a01ae104e99a082a6e7bb58699b86347049da521d175d0dace7"
+KOTLINC_RELEASE_SHA = "11db93a4d6789e3406c7f60b9f267eba26d6483dcd771eff9f85bb7e9837011f"
 
 KOTLINC_RELEASE = {
     "urls": [
@@ -77,8 +76,6 @@ KOTLINC_RELEASE = {
     ],
     "sha256": KOTLINC_RELEASE_SHA,
 }
-
-load("@io_bazel_rules_kotlin//kotlin:dependencies.bzl", "kt_download_local_dev_dependencies")
 
 kt_download_local_dev_dependencies()
 

@@ -18,26 +18,21 @@ kt_jvm_library(
     ],
 )
 
-
 kt_jvm_library(
     name = "test",
     srcs = glob(["src/test/kotlin/**/*.kt"]),
     deps = [
         ":main",
-
-        "@maven//:dev_forkhandles_result4k",
         "@maven//:com_natpryce_hamkrest",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-        "@maven//:org_junit_jupiter_junit_jupiter_engine",
-
-        "@maven//:org_http4k_http4k_testing_webdriver",
+        "@maven//:dev_forkhandles_result4k",
+        "@maven//:org_http4k_http4k_testing_approval",
         "@maven//:org_http4k_http4k_testing_chaos",
         "@maven//:org_http4k_http4k_testing_hamkrest",
-        "@maven//:org_http4k_http4k_testing_approval",
+        "@maven//:org_http4k_http4k_testing_webdriver",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
     ],
 )
-
-
 
 define_kt_toolchain(
     name = "kotlin_toolchain",
