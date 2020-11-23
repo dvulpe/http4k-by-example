@@ -42,6 +42,7 @@ maven_install(
         "org.http4k:http4k-template-handlebars:3.278.0",
         "org.junit.jupiter:junit-jupiter-api:5.7.0",
         "org.junit.jupiter:junit-jupiter-engine:5.7.0",
+        "org.junit.platform:junit-platform-console:1.7.0",
         "org.http4k:http4k-testing-hamkrest:3.278.0",
         "org.http4k:http4k-testing-chaos:3.278.0",
         "org.http4k:http4k-testing-approval:3.278.0",

@@ -1,8 +1,9 @@
-load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "define_kt_toolchain", "kt_jvm_library")
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "define_kt_toolchain", "kt_jvm_library", "kt_jvm_test")
 
 kt_jvm_library(
     name = "main",
     srcs = glob(["src/main/kotlin/**/*.kt"]),
+    resources = glob(["src/main/resources/**/*"]),
     deps = [
         "@maven//:com_squareup_okhttp3_okhttp",
         "@maven//:org_http4k_http4k_client_okhttp",
@@ -19,7 +20,7 @@ kt_jvm_library(
 )
 
 kt_jvm_library(
-    name = "test",
+    name = "test_lib",
     srcs = glob(["src/test/kotlin/**/*.kt"]),
     deps = [
         ":main",
@@ -31,6 +32,95 @@ kt_jvm_library(
         "@maven//:org_http4k_http4k_testing_webdriver",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
+    ],
+)
+
+kt_jvm_test(
+    name = "test_functional",
+    args = [
+        "--select-package=functional",
+    ],
+    data = [
+        "//src/test/resources/functional",
+    ],
+    main_class = "org.junit.platform.console.ConsoleLauncher",
+    tags = ["block-network"],
+    deps = [
+        ":main",
+        ":test_lib",
+        "@maven//:org_http4k_http4k_testing_approval",
+        "@maven//:org_http4k_http4k_testing_chaos",
+        "@maven//:org_http4k_http4k_testing_hamkrest",
+        "@maven//:org_http4k_http4k_testing_webdriver",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_console",
+    ],
+)
+
+kt_jvm_test(
+    name = "test_nonfunctional",
+    args = [
+        "--select-package=nonfunctional",
+    ],
+    data = [
+        "//src/test/resources/nonfunctional",
+    ],
+    main_class = "org.junit.platform.console.ConsoleLauncher",
+    tags = ["block-network"],
+    deps = [
+        ":main",
+        ":test_lib",
+        "@maven//:org_http4k_http4k_testing_approval",
+        "@maven//:org_http4k_http4k_testing_chaos",
+        "@maven//:org_http4k_http4k_testing_hamkrest",
+        "@maven//:org_http4k_http4k_testing_webdriver",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_console",
+    ],
+)
+
+kt_jvm_test(
+    name = "test_cdc",
+    args = [
+        "--select-package=cdc",
+    ],
+    main_class = "org.junit.platform.console.ConsoleLauncher",
+    tags = ["block-network"],
+    deps = [
+        ":main",
+        ":test_lib",
+        "@maven//:org_http4k_http4k_testing_approval",
+        "@maven//:org_http4k_http4k_testing_chaos",
+        "@maven//:org_http4k_http4k_testing_hamkrest",
+        "@maven//:org_http4k_http4k_testing_webdriver",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_console",
+    ],
+)
+
+kt_jvm_test(
+    name = "test_unit",
+    args = [
+        "--select-package=unit",
+    ],
+    data = [
+        "//src/test/resources/unit",
+    ],
+    main_class = "org.junit.platform.console.ConsoleLauncher",
+    tags = ["block-network"],
+    deps = [
+        ":main",
+        ":test_lib",
+        "@maven//:org_http4k_http4k_testing_approval",
+        "@maven//:org_http4k_http4k_testing_chaos",
+        "@maven//:org_http4k_http4k_testing_hamkrest",
+        "@maven//:org_http4k_http4k_testing_webdriver",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_console",
     ],
 )
 

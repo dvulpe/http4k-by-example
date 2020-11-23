@@ -1,2 +1,6 @@
 build --strategy=KotlinCompile=worker
 build --strategy=JavaCompile=worker
+test --strategy=KotlinCompile=worker
+test --strategy=JavaCompile=worker
+test --experimental_inprocess_symlink_creation
+test --test_output=errors

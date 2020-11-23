@@ -1,0 +1,7 @@
+filegroup(
+    name = "functional",
+    srcs = glob(["*.approved"]),
+    visibility = [
+        "//visibility:public",
+    ],
+)
