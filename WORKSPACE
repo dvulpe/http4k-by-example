@@ -57,8 +57,9 @@ maven_install(
 
 git_repository(
     name = "io_bazel_rules_kotlin",
-    commit = "69159daf2b49746706e2497e2fd272afe8a9afee",
+    commit = "c8f59ed5d6a766e281a3a8a2c170c0019d05d126",
     remote = "https://github.com/bazelbuild/rules_kotlin.git",
+    shallow_since = "1607656273 -0500",
 )
 
 load("@io_bazel_rules_kotlin//kotlin:dependencies.bzl", "kt_download_local_dev_dependencies")
@@ -67,9 +68,9 @@ kt_download_local_dev_dependencies()
 
 load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories")
 
-KOTLIN_VERSION = "1.4.20"
+KOTLIN_VERSION = "1.4.21"
 
-KOTLINC_RELEASE_SHA = "11db93a4d6789e3406c7f60b9f267eba26d6483dcd771eff9f85bb7e9837011f"
+KOTLINC_RELEASE_SHA = "46720991a716e90bfc0cf3f2c81b2bd735c14f4ea6a5064c488e04fd76e6b6c7"
 
 KOTLINC_RELEASE = {
     "urls": [
