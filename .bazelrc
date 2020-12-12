@@ -1,5 +1,8 @@
-test --test_output=errors
 build --announce_rc
+
+test --test_output=errors
+test --announce_rc
+test --experimental_inprocess_symlink_creation
 
 build:remote --bes_results_url=https://app.buildbuddy.io/invocation/
 build:remote --bes_backend=grpcs://cloud.buildbuddy.io
